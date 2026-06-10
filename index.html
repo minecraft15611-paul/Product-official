@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>築本工作室</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="container">
+            <div class="logo">築本工作室</div>
+            <ul class="nav-links">
+                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#login">登入</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section id="hero" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1>築本工作室</h1>
+                <h2>From Algorithm to Architecture</h2>
+                <p>Bridging Digital Complexity &amp; Physical Fabrication</p>
+                <button class="cta-button">VIEW PROJECTS</button>
+            </div>
+        </section>
+
+        <!-- Expertise (圖片版) -->
+        <section id="expertise" class="section">
+            <div class="container">
+                <h2 class="section-label">OUR EXPERTISE</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-col">
+                        <div class="expertise-images">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=600&auto=format&fit=crop" alt="Digital workflow visualization">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop" alt="Design process">
+                        </div>
+                    </div>
+                    <div class="expertise-col">
+                        <h3 class="expertise-title">ADVANCED FABRICATION</h3>
+                        <div class="expertise-images">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=400&auto=format&fit=crop" alt="CNC fabrication">
+                            <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=400&auto=format&fit=crop" alt="Wood fabrication">
+                        </div>
+                    </div>
+                    <div class="expertise-col">
+                        <h3 class="expertise-title">SIGNATURE SYSTEMS</h3>
+                        <div class="expertise-images">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=400&auto=format&fit=crop" alt="Parametric wall system">
+                            <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=400&auto=format&fit=crop" alt="Architectural detail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process + Featured Projects (兩欄並排) -->
+        <section id="process" class="section section-split">
+            <div class="container">
+                <div class="split-layout">
+
+                    <!-- 左：Design-to-Production Speed -->
+                    <div class="split-left">
+                        <h2 class="section-label">DESIGN-TO-PRODUCTION SPEED</h2>
+                        <div class="speed-widget">
+                            <div class="speed-labels">
+                                <span>CONCEPT</span>
+                                <span>REALITY</span>
+                            </div>
+                            <div class="speed-track">
+                                <div class="speed-fill"></div>
+                                <div class="speed-thumb"></div>
+                            </div>
+                            <p class="speed-sub">Accelerated Workflow</p>
+                        </div>
+                        <blockquote class="speed-quote">
+                            "Transforming visions into reality, faster"
+                        </blockquote>
+                    </div>
+
+                    <!-- 右：Featured Projects -->
+                    <div class="split-right" id="projects">
+                        <h2 class="section-label">FEATURED PROJECTS</h2>
+                        <div class="projects-grid">
+                            <figure class="project-card">
+                                <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=600&auto=format&fit=crop" alt="University Library">
+                                <figcaption>University Library</figcaption>
+                            </figure>
+                            <figure class="project-card">
+                                <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?q=80&w=600&auto=format&fit=crop" alt="Tech Campus Lobby">
+                                <figcaption>Tech Campus Lobby</figcaption>
+                            </figure>
+                            <figure class="project-card">
+                                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600&auto=format&fit=crop" alt="Restaurant Dividers">
+                                <figcaption>Restaurant Dividers</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-left">
+                <div class="logo footer-logo">andalusia.design</div>
+                <address>
+                    <p>123 Design Street, Studio 4F</p>
+                    <p>Taipei, Taiwan 220</p>
+                    <p>+886 2 1234 5678</p>
+                    <p>hello@andalusia.design</p>
+                </address>
+            </div>
+            <div class="footer-right">
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="Pinterest">PT</a>
+                </div>
+                <div class="newsletter">
+                    <label for="newsletter-email">Newsletter</label>
+                    <div class="newsletter-row">
+                        <input id="newsletter-email" type="email" placeholder="your@email.com">
+                        <button type="button">→</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

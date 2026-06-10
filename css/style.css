@@ -1,0 +1,482 @@
+/* 1. 全域變數定義 */
+:root {
+    --bg-dark: #0a0a0a;
+    --card-bg: #0e0e0e;
+    --text-main: #ffffff;
+    --text-muted: #8aadd4;           /* 藍調灰，取代中性灰 */
+    --accent-blue: #1a4fff;          /* 更深更重的科技藍 */
+    --accent-blue-dim: #0f2e99;      /* 暗藍，用於光暈底色 */
+    --border-color: #0d1a3a;         /* 藍黑邊框，靜態就有溫度 */
+    --glow-blue: rgba(26, 79, 255, 0.35);
+    --glow-blue-soft: rgba(26, 79, 255, 0.15);
+    --spacing-md: 2rem;
+}
+
+/* 2. 重置預設樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: 'Inter', -apple-system, sans-serif;
+    line-height: 1.6;
+}
+
+/* 3. 版面容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* 4. 導航列 */
+.site-header {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.site-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--text-main);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px var(--glow-blue);  /* logo 帶藍光 */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--text-main);
+    text-shadow: 0 0 12px var(--glow-blue);
+}
+
+/* 5. Hero Section */
+.hero-section {
+    position: relative;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+/* 雙層遮罩：純黑底 + 藍色邊緣光暈 */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(15, 46, 153, 0.45) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(26, 79, 255, 0.3) 0%, transparent 55%),
+        rgba(0, 0, 0, 0.55);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 3px;
+}
+
+.hero-content h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* CTA 按鈕：靜態就有藍光存在感 */
+.cta-button {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--accent-blue);
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+    cursor: pointer;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    transition: 0.3s;
+    box-shadow: 0 0 18px var(--glow-blue-soft), inset 0 0 18px rgba(26, 79, 255, 0.05);
+}
+
+.cta-button:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 32px var(--glow-blue), inset 0 0 24px rgba(26, 79, 255, 0.2);
+}
+
+/* 6. Expertise Section */
+.section {
+    padding: 6rem 0;
+}
+
+.section h2 {
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+/* 7. 卡片網格 */
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+/* 靜態卡片底部有一條細藍線暗示存在 */
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent-blue);
+    transition: width 0.4s ease;
+}
+
+.card:hover::after {
+    width: 100%;
+}
+
+.card:hover {
+    border-color: rgba(26, 79, 255, 0.5);
+    box-shadow: 0 0 28px var(--glow-blue-soft), 0 8px 32px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* 8. Footer */
+.site-footer {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.site-footer p {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* 9. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition: none !important;
+    }
+}
+
+/* ── Expertise 圖片區 ── */
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: start;
+}
+
+.expertise-title {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.expertise-images {
+    display: flex;
+    gap: 0.5rem;
+    overflow: hidden;   /* 防止圖片溢出欄位 */
+    width: 100%;
+}
+
+.expertise-images img {
+    flex: 1;
+    min-width: 0;       /* 讓 flex 子項目可以縮小 */
+    width: 0;           /* 強制依 flex 比例分配，不按原始尺寸 */
+    height: 280px;      /* 固定高度取代 aspect-ratio */
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.85);
+    transition: filter 0.3s, box-shadow 0.3s;
+}
+
+.expertise-images img:hover {
+    filter: brightness(1);
+    box-shadow: 0 0 20px var(--glow-blue-soft);
+}
+
+/* ── Split Layout (Process + Projects) ── */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+/* 左欄：Speed Widget */
+.speed-widget {
+    margin-top: 2rem;
+}
+
+.speed-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.speed-track {
+    position: relative;
+    height: 2px;
+    background: var(--border-color);
+    margin-bottom: 0.75rem;
+}
+
+.speed-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 65%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue-dim), var(--accent-blue));
+    box-shadow: 0 0 10px var(--glow-blue);
+}
+
+.speed-thumb {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    box-shadow: 0 0 12px var(--glow-blue);
+}
+
+.speed-sub {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+.speed-quote {
+    margin-top: 3rem;
+    font-size: 1.1rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-main);
+    border-left: 2px solid var(--accent-blue);
+    padding-left: 1.5rem;
+    line-height: 1.8;
+    text-shadow: 0 0 30px var(--glow-blue-soft);
+}
+
+/* 右欄：Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.project-card img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.7);
+    transition: filter 0.4s, transform 0.4s;
+}
+
+.project-card:hover img {
+    filter: brightness(0.9);
+    transform: scale(1.03);
+}
+
+.project-card figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: var(--text-main);
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+}
+
+/* ── Footer ── */
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 3rem 0;
+}
+
+.footer-logo {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+}
+
+address {
+    font-style: normal;
+}
+
+address p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 2;
+    letter-spacing: 0.5px;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.social-links a:hover {
+    border-color: var(--accent-blue);
+    color: var(--text-main);
+    box-shadow: 0 0 10px var(--glow-blue-soft);
+}
+
+.newsletter label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-align: right;
+}
+
+.newsletter-row {
+    display: flex;
+    gap: 0;
+}
+
+.newsletter-row input {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-right: none;
+    color: var(--text-main);
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    outline: none;
+    width: 200px;
+    transition: border-color 0.3s;
+}
+
+.newsletter-row input:focus {
+    border-color: var(--accent-blue);
+}
+
+.newsletter-row button {
+    background: var(--accent-blue);
+    border: 1px solid var(--accent-blue);
+    color: var(--text-main);
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: box-shadow 0.3s;
+}
+
+.newsletter-row button:hover {
+    box-shadow: 0 0 16px var(--glow-blue);
+}
+
+/* ── Section label 統一樣式 ── */
+.section-label {
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    margin-bottom: 0;
+}

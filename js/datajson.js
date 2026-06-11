@@ -97,6 +97,11 @@ function filterAndRender() {
     renderCards(filtered);
 }
 
+function logout() {
+    sessionStorage.removeItem('isLoggedIn');
+    window.location.href = './index.html';
+}
+
 const debouncedSearch = debounce(filterAndRender, 400);
 
 document.addEventListener('DOMContentLoaded', () => {

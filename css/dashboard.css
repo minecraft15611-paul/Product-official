@@ -1,0 +1,186 @@
+/* 1. 整體背景改為帶有深藍色調的漸層 */
+body {
+    background: radial-gradient(circle at top right, #0b1525, #000);
+    color: #e0e0e0;
+}
+
+.admin-header {
+    padding: 2rem;
+    border-bottom: 1px solid #262626;
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-bar {
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.filter-bar button {
+    background: transparent;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+}
+
+.asset-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 核心排版：三欄式 */
+    gap: 2rem;
+}
+
+.asset-card {
+    background: #141414;
+    border: 1px solid #262626;
+    padding: 1rem;
+}
+
+.asset-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: #0a0a0a;
+}
+
+.actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* 顯示時的狀態 */
+.modal-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px); /* 輕微模糊效果，增加質感 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    /* 動畫關鍵設定 */
+    opacity: 0;             /* 預設不可見 */
+    visibility: hidden;     /* 不佔據空間 */
+    transition: opacity 0.3s ease, visibility 0.3s; /* 設定淡入淡出時間 */
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    padding: 25px;
+    max-width: 600px; /* 稍微縮小整體寬度 */
+    background: rgba(10, 20, 35, 0.95); /* 深藍色基底 */
+    line-height: 1.6;
+    box-shadow: 0 0 20px rgba(0, 100, 255, 0.2); /* 淡淡的藍色光暈 */
+    max-height: 85vh; /* 最多佔螢幕高度的 85% */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* 防止內容直接溢出 */
+}
+
+/* 讓中間的內容區域可以滾動 */
+.modal-body-scroll {
+    overflow-y: auto; /* 超過高度時出現捲軸 */
+    padding-right: 10px; /* 留給捲軸空間 */
+}
+
+/* 關閉按鈕移動至右上角 */
+.modal-header {
+    display: flex;
+    justify-content: flex-end; /* 將按鈕推向右邊 */
+    margin-bottom: 10px;
+}
+
+/* 圖片精簡化 */
+.modal-img-wrapper {
+    width: 100%;
+    max-height: 200px; /* 限制高度 */
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.close-btn {
+    background: transparent;
+    border: 1px solid #1a3a60;
+    color: #00d4ff;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+#modal-image {
+    border: 1px solid #1a3a60; /* 與整體深藍色系呼應 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    object-fit: contain; /* 確保圖片完整顯示 */
+}
+
+/* 當圖片 hover 時增加一點科技放大效果 */
+#modal-image:hover {
+    transform: scale(1.02);
+}
+
+#modal-image {
+    border: 1px solid #1a3a60; /* 與整體深藍色系呼應 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+/* 當圖片 hover 時增加一點科技放大效果 */
+#modal-image:hover {
+    transform: scale(1.02);
+}
+
+/* 代碼區塊特別樣式 */
+.code-block {
+    background: #050a12;
+    border-left: 3px solid #00d4ff; /* 左側亮藍色裝飾線 */
+    color: #00d4ff; /* 螢光青藍色文字 */
+}
+
+/* 修正搜尋框容器 */
+header {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px; /* 標題與搜尋框之間的間距 */
+}
+
+/* 修正搜尋框樣式 */
+#search-bar {
+    width: 100%;
+    max-width: 500px; /* 限制最大寬度，避免像現在一樣橫跨整個螢幕 */
+    padding: 12px 16px;
+    background-color: #1a1a1a; /* 與深色背景融合 */
+    border: 1px solid #333;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+#search-bar:focus {
+    border-color: #555; /* 點擊時邊框微亮 */
+}
+
+/* 4. 按鈕：增加滑鼠懸停效果 */
+button {
+    background: #152535;
+    border: 1px solid #204060;
+    color: #00d4ff;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #204060;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
+}

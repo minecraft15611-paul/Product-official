@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "科技感排版 A",
+        "author": "Paul Wang",
+        "category": "Layout",
+        "tags": ["科技", "排版", "黑底"],
+        "description": "這是一款適用於科技官網的極簡排版，使用 Grid 佈局確保三欄對齊，適合放置服務亮點。",
+        "preview_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500",
+        "code_snippet": ".container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }"
+    },
+    {
+        "id": 2,
+        "title": "動態視差效果",
+        "preview_url": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=500",
+        "author": "Paul Wang",
+        "category": "Motion",
+        "tags": ["動態", "視差", "滾動"],
+        "description": "透過監聽 scroll 事件產生的視差效果，建議用於首頁 banner 提升動態科技感。",
+        "code_snippet": "window.addEventListener('scroll', () => { ... });"
+    }
+]

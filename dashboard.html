@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+<body>
+    <header class="admin-header">
+        <h1>素材管理</h1>
+        <input type="text" id="search-bar" placeholder="搜尋標題、標籤、成員或描述..." style="width: 100%; margin-bottom: 20px;">
+        <nav>
+            <button class="add-btn">+ ADD ASSET</button>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <div id="detail-modal" class="modal-overlay">
+            <div class="modal-content">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close-btn" onclick="closeModal()">關閉 X</button>
+                    </div>        
+                    <div class="modal-body-scroll">
+                        <img id="modal-image" src="" alt="Asset Preview" style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px;">
+                        <h2 id="modal-title"></h2>
+                        <div class="meta">
+                            <span id="modal-author"></span>
+                        </div>
+                        <p id="modal-desc"></p>
+                        <pre class="code-block"><code id="modal-code"></code></pre>
+                        <button onclick="copyCode()">複製代碼</button>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <button onclick="setFilter('ALL')">ALL</button>
+            <button onclick="setFilter('LAYOUT')">LAYOUT</button>
+            <button onclick="setFilter('MOTION')">MOTION</button>
+        </div>
+
+        <section class="asset-grid">
+            
+        </section>
+    </main>
+    <script src="./js/datajson.js"></script>
+</body>
+</html>

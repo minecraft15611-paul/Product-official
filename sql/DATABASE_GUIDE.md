@@ -4,6 +4,8 @@
 
 > 💡 在 VS Code 中按 `Cmd+Shift+V`（Mac）或 `Ctrl+Shift+V`（Windows）可預覽排版與 ER Diagram。
 
+> 📄 `schema.sql` 位於同目錄，包含完整建表 DDL，可直接在 MariaDB/MySQL 執行重建資料庫。
+
 ## 1. 資料庫關聯圖 (ER Diagram)
 
 ```mermaid

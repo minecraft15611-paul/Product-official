@@ -5,12 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>築本數位工作室</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ── RWD：手機版 (768px 以下) ── */
+        @media (max-width: 768px) {
+
+            /* 導覽列：兩行 */
+            .site-header nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            /* Hero */
+            .hero-section {
+                height: 60vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content h2 {
+                font-size: 1.2rem;
+            }
+
+            /* Expertise：三欄 → 單欄 */
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-images {
+                flex-direction: column;
+            }
+
+            .expertise-images img {
+                height: 200px;
+                width: 100%;
+            }
+
+            /* Split layout：左右 → 上下 */
+            .split-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            /* Projects：三欄 → 單欄 */
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card img {
+                aspect-ratio: 16 / 9;
+            }
+
+            /* Footer：左右 → 上下 */
+            .footer-inner {
+                flex-direction: column;
+            }
+
+            .footer-right {
+                align-items: flex-start;
+            }
+
+            .newsletter-row input {
+                width: 100%;
+            }
+        }
+
+        /* ── LOGO SVG ── */
+        .logo-mark {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .logo-mark svg {
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 <body>
 
     <header class="site-header">
         <nav class="container">
-            <div class="logo">築本數位工作室</div>
+            <div class="logo">
+                <span class="logo-mark">
+                    <!-- 暫用 LOGO：幾何方塊組合，科技藍配色 -->
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="1" width="11" height="11" stroke="#1a4fff" stroke-width="1.5"/>
+                        <rect x="16" y="1" width="11" height="11" fill="#1a4fff" fill-opacity="0.15" stroke="#1a4fff" stroke-width="1.5"/>
+                        <rect x="1" y="16" width="11" height="11" fill="#1a4fff" fill-opacity="0.15" stroke="#1a4fff" stroke-width="1.5"/>
+                        <rect x="16" y="16" width="11" height="11" stroke="#1a4fff" stroke-width="1.5" stroke-dasharray="2 2"/>
+                    </svg>
+                    築本數位工作室
+                </span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#contact">CONTACT</a></li>
                 <li><a href="./login.html">登入</a></li>

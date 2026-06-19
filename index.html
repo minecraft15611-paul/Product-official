@@ -106,7 +106,7 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#contact">CONTACT</a></li>
-                <li><a href="./login.html">登入</a></li>
+                <li><a href="#" onclick="return false;">登入</a></li>
             </ul>
         </nav>
     </header>
@@ -206,12 +206,14 @@
     <footer id="contact" class="site-footer">
         <div class="container footer-inner">
             <div class="footer-left">
-                <div class="logo footer-logo">andalusia.design</div>
+                <div class="logo footer-logo">
+                    zhuben.digital <span id="footer-studio">STUDI<span id="admin-o" title="" onclick="adminEntry()">O</span></span>
+                </div>
                 <address>
                     <p>123 Design Street, Studio 4F</p>
                     <p>Taipei, Taiwan 220</p>
                     <p>+886 2 1234 5678</p>
-                    <p>hello@andalusia.design</p>
+                    <p>hello@zhuben.digital</p>
                 </address>
             </div>
             <div class="footer-right">
@@ -232,4 +234,27 @@
     </footer>
 
 </body>
+
+<style>
+    #admin-o {
+        cursor: default;
+        user-select: none;
+    }
+</style>
+
+<script>
+    let adminClicks = [];
+
+    function adminEntry() {
+        const now = Date.now();
+        adminClicks.push(now);
+        adminClicks = adminClicks.filter(t => now - t < 1500);
+
+        if (adminClicks.length >= 3) {
+            adminClicks = [];
+            window.location.href = './dashboard.html';
+        }
+    }
+</script>
+
 </html>

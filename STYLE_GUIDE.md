@@ -109,7 +109,38 @@ transform: translateY(-5px);
 
 ---
 
-## 7. Micro-interactions 規範
+## 7. 表格（Admin Table）
+
+- 操作欄（`.td-actions`）禁止使用 `width: 1%` 壓縮寬度
+  → 會導致 flex 子項目溢出、與相鄰欄重疊（已發生兩次）
+- 正確寫法：給操作欄明確的 `min-width`，讓瀏覽器有正確的計算基準
+
+```css
+/* ✅ 正確 */
+.td-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    white-space: nowrap;
+    min-width: 160px;
+}
+
+.admin-table th:last-child,
+.admin-table td:last-child {
+    white-space: nowrap; /* 只保留 nowrap，不加 width */
+}
+
+/* ❌ 禁止 — width: 1% 配合 flex 容器會導致按鈕擠爆相鄰欄 */
+.admin-table td:last-child {
+    width: 1%;
+}
+```
+
+- 若需要欄位「盡可能收窄」，改用 `width: max-content` 或明確指定 `min-width`
+
+---
+
+## 8. Micro-interactions 規範
 
 - 所有 transition 時間：`0.3s ease`（卡片底線用 `0.4s`）
 - hover 效果：藍色光暈（`box-shadow`）+ 位移（`translateY(-5px)`）
@@ -126,7 +157,7 @@ transform: translateY(-5px);
 
 ---
 
-## 8. 頁面結構與色彩對應
+## 9. 頁面結構與色彩對應
 
 | 頁面 | 主色調 | 強調色 |
 | :--- | :--- | :--- |
@@ -138,7 +169,7 @@ transform: translateY(-5px);
 
 ---
 
-## 9. 禁止事項
+## 10. 禁止事項
 
 - 禁止使用純黑 `#000000` 作為主背景（用 `#0a0a0a`）
 - 禁止直接 hardcode 色值，一律使用 CSS 變數

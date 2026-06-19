@@ -2,53 +2,71 @@
 <html lang="zh-Hant-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>築本後台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
+
+    <!-- Header -->
     <header class="admin-header">
-        <h1>素材管理</h1>
-        <input type="text" id="search-bar" placeholder="搜尋標題、標籤、成員或描述..." style="width: 100%; margin-bottom: 20px;">
-        <nav>
-            <button class="add-btn">+ ADD ASSET</button>
-            <button class="logout-btn" onclick="logout()">登出</button>
-        </nav>
+        <div class="admin-header__logo">築本<span>STUDIO</span></div>
+        <div class="admin-header__right">
+            <span class="admin-header__user">ADMIN</span>
+            <a href="./index.html" class="admin-btn">← 回官網</a>
+            <button class="admin-btn" onclick="logout()">登出</button>
+        </div>
     </header>
 
-    <main class="container">
+    <div class="admin-layout">
 
-        <div id="detail-modal" class="modal-overlay">
-            <div class="modal-content">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close-btn" onclick="closeModal()">關閉 X</button>
-                    </div>        
-                    <div class="modal-body-scroll">
-                        <img id="modal-image" src="" alt="Asset Preview" style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px;">
-                        <h2 id="modal-title"></h2>
-                        <div class="meta">
-                            <span id="modal-author"></span>
-                        </div>
-                        <p id="modal-desc"></p>
-                        <pre class="code-block"><code id="modal-code"></code></pre>
-                        <button onclick="copyCode()">複製代碼</button>
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <nav>
+                <ul class="sidebar-nav">
+                    <li class="sidebar-nav__section-label">主要</li>
+                    <li><a href="#dashboard" class="sidebar-nav__link">Dashboard</a></li>
+                    <li><a href="#projects" class="sidebar-nav__link">Projects</a></li>
+                    <li><a href="#assets" class="sidebar-nav__link">Assets</a></li>
 
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+                    <li class="sidebar-nav__section-label">商品</li>
+                    <li><a href="#api-products" class="sidebar-nav__link">API Products</a></li>
 
-        <div class="filter-bar">
-            <button onclick="setFilter('ALL')">ALL</button>
-            <button onclick="setFilter('LAYOUT')">LAYOUT</button>
-            <button onclick="setFilter('MOTION')">MOTION</button>
-        </div>
+                    <li class="sidebar-nav__section-label">內部</li>
+                    <li><a href="#ideas" class="sidebar-nav__link">Ideas</a></li>
+                    <li><a href="#meetings" class="sidebar-nav__link">Meetings</a></li>
+                    <li><a href="#requests" class="sidebar-nav__link">Requests</a></li>
 
-        <section class="asset-grid">
-            
-        </section>
-    </main>
-    <script src="./js/datajson.js"></script>
+                    <li class="sidebar-nav__section-label">管理</li>
+                    <li><a href="#clients" class="sidebar-nav__link">Clients</a></li>
+                    <li><a href="#members" class="sidebar-nav__link">Members</a></li>
+                    <li><a href="#tags" class="sidebar-nav__link">Tags / 分類 / 作者</a></li>
+                    <li><a href="#account" class="sidebar-nav__link">帳號管理</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main" id="main-content">
+            <!-- 路由注入區塊 -->
+        </main>
+
+    </div>
+
+    <script src="./js/auth.js"></script>
+    <script src="./js/pages/tags.js"></script>
+    <script src="./js/router.js"></script>
+    <script src="./js/pages/projects.js"></script>
+    <script src="./js/pages/assets.js"></script>
+    <script src="./js/pages/api-products.js"></script>
+    <script src="./js/pages/ideas.js"></script>
+    <script src="./js/pages/meetings.js"></script>
+    <script src="./js/pages/requests.js"></script>
+    <script src="./js/pages/clients.js"></script>
+    <script src="./js/pages/members.js"></script>
+    <script src="./js/pages/dashboard.js"></script>
 </body>
 </html>

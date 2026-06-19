@@ -101,6 +101,8 @@ CREATE TABLE `requests` (
   `email` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `created_at` timestamp DEFAULT current_timestamp(),
+  `status` enum('new','read','replied') DEFAULT 'new',
+  `note` text DEFAULT NULL,
   `is_deleted` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`request_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -129,7 +131,7 @@ CREATE TABLE `meetings` (
   `summary` text DEFAULT NULL,
   `decisions` text DEFAULT NULL,
   `attachments` text DEFAULT NULL,
-  `status` enum('待整理','已歸檔','待追蹤') DEFAULT '待整理',
+  `status` enum('scheduled','done','cancelled') DEFAULT 'scheduled',
   `project_id` int(11) DEFAULT NULL,
   `created_at` timestamp DEFAULT current_timestamp(),
   `updated_at` timestamp DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -188,6 +190,10 @@ CREATE TABLE `clients` (
   `password_hash` varchar(255) NOT NULL,
   `assigned_member_id` int(11) DEFAULT NULL,
   `note` text DEFAULT NULL,
+  `status` enum('active','maintaining','ended') DEFAULT 'active',
+  `maintain_items` varchar(500) DEFAULT NULL,
+  `maintain_fee` varchar(100) DEFAULT NULL,
+  `maintain_until` date DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT 1,
   `created_at` timestamp DEFAULT current_timestamp(),
   `updated_at` timestamp DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -253,4 +259,15 @@ CREATE TABLE `idea_tags` (
   PRIMARY KEY (`idea_id`, `tag_id`),
   CONSTRAINT `fk_it_idea` FOREIGN KEY (`idea_id`) REFERENCES `ideas` (`idea_id`),
   CONSTRAINT `fk_it_tag` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- activity_logs
+CREATE TABLE `activity_logs` (
+  `log_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` varchar(100) NOT NULL,
+  `action` varchar(50) NOT NULL,
+  `target_type` varchar(50) NOT NULL,
+  `target_name` varchar(255) DEFAULT NULL,
+  `created_at` timestamp DEFAULT current_timestamp(),
+  `note` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`log_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

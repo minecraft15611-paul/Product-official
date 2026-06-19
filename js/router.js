@@ -10,8 +10,9 @@ const routes = {
     'requests': () => renderRequestsPage(),
     'clients': () => renderClientsPage(),
     'members': () => renderMembersPage(),
-    'tags':         () => renderTagsPage(),
-    'account':      () => renderPlaceholder('帳號管理', '修改登入帳號與密碼'),
+    'tags': () => renderTagsPage(),
+    'logs': () => renderLogsPage(),
+    'account': () => renderAccountPage()
 };
 
 function renderPlaceholder(title, subtitle) {

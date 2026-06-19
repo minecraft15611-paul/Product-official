@@ -7,7 +7,7 @@ let ideasData = [
         title: '後台加入深色/淺色切換',
         description: '讓管理員可以切換後台主題，減少長時間盯螢幕的疲勞。',
         proposer: 'Paul',
-        status: 'raw',
+        status: '新點子',
         project_id: null,
         project_name: null,
         created_at: '2026-06-01',
@@ -17,7 +17,7 @@ let ideasData = [
         title: 'API 商品頁加入試用申請表單',
         description: '讓潛在客戶可以直接在商品頁填寫試用申請，降低聯絡門檻。',
         proposer: 'Joseph',
-        status: 'refined',
+        status: '討論中',
         project_id: 1,
         project_name: '築本官網重設計',
         created_at: '2026-06-05',
@@ -27,7 +27,7 @@ let ideasData = [
         title: '定期發送專案進度週報給客戶',
         description: '每週五自動彙整本週完成項目，Email 發給對應客戶。',
         proposer: 'Oreo',
-        status: 'adopted',
+        status: '已採用',
         project_id: null,
         project_name: null,
         created_at: '2026-05-20',
@@ -37,7 +37,7 @@ let ideasData = [
         title: '在官網加入合作夥伴 Logo 牆',
         description: '展示曾合作過的品牌，增加信任感。',
         proposer: 'Paul',
-        status: 'dropped',
+        status: '已放棄',
         project_id: 1,
         project_name: '築本官網重設計',
         created_at: '2026-05-10',
@@ -47,7 +47,7 @@ let ideasData = [
         title: 'Meetings 頁面加入 AI 摘要功能',
         description: '會議記錄輸入後，自動產出重點摘要與待辦清單。',
         proposer: 'Paul',
-        status: 'raw',
+        status: '新點子',
         project_id: null,
         project_name: null,
         created_at: '2026-06-15',
@@ -66,10 +66,10 @@ const IDEA_PROJECTS = [
 
 // ── 狀態設定 ──
 const IDEA_STATUS = {
-    raw:      { label: 'RAW',      cls: 'status--draft',     next: 'refined' },
-    refined:  { label: 'REFINED',  cls: 'status--published', next: 'adopted' },
-    adopted:  { label: 'ADOPTED',  cls: 'idea-status--adopted', next: 'dropped' },
-    dropped:  { label: 'DROPPED',  cls: 'status--archived',  next: 'raw' },
+    '新點子': { label: '新點子', cls: 'status--draft',        next: '討論中' },
+    '討論中': { label: '討論中', cls: 'status--published',    next: '已採用' },
+    '已採用': { label: '已採用', cls: 'idea-status--adopted', next: '已放棄' },
+    '已放棄': { label: '已放棄', cls: 'status--archived',     next: '新點子' },
 };
 
 // ── 狀態篩選 / 搜尋 ──
@@ -108,10 +108,10 @@ function renderIdeasPage() {
                 />
                 <select class="admin-input assets-status-filter admin-select" onchange="ideaOnStatusFilter(this.value)">
                     <option value="">全部狀態</option>
-                    <option value="raw">Raw</option>
-                    <option value="refined">Refined</option>
-                    <option value="adopted">Adopted</option>
-                    <option value="dropped">Dropped</option>
+                    <option value="新點子">新點子</option>
+                    <option value="討論中">討論中</option>
+                    <option value="已採用">已採用</option>
+                    <option value="已放棄">已放棄</option>
                 </select>
             </div>
             <button class="admin-btn admin-btn--primary" onclick="ideaOpenModal(null)">+ 新增點子</button>
@@ -170,7 +170,7 @@ function ideaRenderTable() {
     }
 
     const rows = filtered.map((item, i) => {
-        const s = IDEA_STATUS[item.status] || IDEA_STATUS.raw;
+        const s = IDEA_STATUS[item.status] || IDEA_STATUS['新點子'];
         return `
             <tr>
                 <td class="td-index">${i + 1}</td>
@@ -266,10 +266,10 @@ function ideaOpenModal(id) {
             <div class="form-row">
                 <label class="form-label">狀態</label>
                 <select class="admin-input admin-select" id="idea-f-status">
-                    <option value="raw"     ${(!item || item.status === 'raw')     ? 'selected' : ''}>Raw</option>
-                    <option value="refined" ${item && item.status === 'refined'    ? 'selected' : ''}>Refined</option>
-                    <option value="adopted" ${item && item.status === 'adopted'    ? 'selected' : ''}>Adopted</option>
-                    <option value="dropped" ${item && item.status === 'dropped'    ? 'selected' : ''}>Dropped</option>
+                    <option value="新點子"     ${(!item || item.status === '新點子') ? 'selected' : ''}>新點子</option>
+                    <option value="討論中" ${item && item.status === '討論中'    ? 'selected' : ''}>討論中</option>
+                    <option value="已採用" ${item && item.status === '已採用'    ? 'selected' : ''}>已採用</option>
+                    <option value="已放棄" ${item && item.status === '已放棄'    ? 'selected' : ''}>已放棄</option>
                 </select>
             </div>
         </div>

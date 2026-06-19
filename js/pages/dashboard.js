@@ -8,7 +8,7 @@ function renderDashboardPage() {
         projectsPublished: typeof projectsData     !== 'undefined' ? projectsData.filter(p => p.status === 'published').length : 0,
         assetsTotal:       typeof assetsData       !== 'undefined' ? assetsData.length : 0,
         apiPublished:      typeof apiProductsData  !== 'undefined' ? apiProductsData.filter(p => p.status === 'published').length : 0,
-        ideasRaw:          typeof ideasData        !== 'undefined' ? ideasData.filter(i => i.status === 'raw').length : 0,
+        ideasRaw:          typeof ideasData        !== 'undefined' ? ideasData.filter(i => i.status === '新點子').length : 0,
         clientsActive:     typeof clientsData      !== 'undefined' ? clientsData.filter(c => c.status === 'active' || c.status === 'maintaining').length : 0,
         requestsNew:       typeof requestsData     !== 'undefined' ? requestsData.filter(r => r.status === 'new').length : 0,
     };
@@ -36,7 +36,7 @@ function renderDashboardPage() {
 
     // ── 待處理 Ideas（raw） ──
     const pendingIdeas = typeof ideasData !== 'undefined'
-        ? ideasData.filter(i => i.status === 'raw').slice(0, 5)
+        ? ideasData.filter(i => i.status === '新點子').slice(0, 5)
         : [];
 
     // ── 快到期 Meetings 待辦 ──
